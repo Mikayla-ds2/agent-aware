@@ -67,7 +67,10 @@ body {
     width: 0%;
 }
 
-
+h1 {
+    margin: 0;
+    font-size: 4rem;
+}
 
 @media screen and (max-width: 768px) {
     .choice-container {

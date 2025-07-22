@@ -12,6 +12,13 @@ let availableQuestions = []
 
 let questions = [
     {
-        question: "Which best fits the definition of Artificial Intelligence?"
+        question: "Which best fits the definition of Artificial Intelligence?",
+        choice1: '1',
+        choice2: '1',
+        choice3: '1',
+        choice4: '1',
+        answer = 1,
+        
+
     }
 ]

@@ -15,40 +15,54 @@
         <div id="game" class="justify-center flex-column">
             <div id="hud">
                 <div class="hud-item">
-                    <p id="progressText" class="hud-prefix">
-                        Question
-                    </p>
+                    <p id="progressText" class="hud-prefix">Question</p>
                     <div id="progressBar">
                         <div id="progressBarFull"></div>
                     </div>
-
                 </div>
                 <div class="hud-item">
-                    <p class="hud-prefix">
-                        Score
-                    </p>
-                    <h1 class="hud-main-text" id="score">
-                        0
-                    </h1>
+                    <p class="hud-prefix">Score</p>
+                    <h1 class="hud-main-text" id="score">0</h1>
                 </div>
             </div>
+
             <h1 id="question">Which best fits the definition of Artificial Intelligence?</h1>
-            <div class="choice-container">
-                <p class="choice-prefix">A</p>
-                <p class="choice-text" data-number="1">Choice</p>
+
+            <!--MCQ Container-->
+            <div id="mcqContainer"
+                <div class="choice-container">
+                    <p class="choice-prefix">A</p>
+                    <p class="choice-text" data-number="1">Choice</p>
+                </div>
+                <div class="choice-container">
+                    <p class="choice-prefix">B</p>
+                    <p class="choice-text" data-number="2">Choice</p>
+                </div>
+                <div class="choice-container">
+                    <p class="choice-prefix">C</p>
+                    <p class="choice-text" data-number="3">Choice</p>
+                </div>
+                <div class="choice-container">
+                    <p class="choice-prefix">D</p>
+                    <p class="choice-text" data-number="4">Choice</p>
+                </div>
             </div>
-             <div class="choice-container">
-                <p class="choice-prefix">B</p>
-                <p class="choice-text" data-number="2">Choice</p>
+            <!--True/False Container-->
+            <div id="tfContainer" class="tf-container hidden">
+                <button class="tf-choice" data-answer="true">True</button>
+                <button class="tf-choice" data-answer="false">False</button>
             </div>
-             <div class="choice-container">
-                <p class="choice-prefix">C</p>
-                <p class="choice-text" data-number="3">Choice</p>
+            <!--Text Input Container-->
+            <div id="textContainer" class="text-input-container hidden">
+                <input type="text" id="TextAnswer" placeholder="Type your answer here..." />
+                <button id="submitBtn" class="btn">Submit</button>
             </div>
-             <div class="choice-container">
-                <p class="choice-prefix">D</p>
-                <p class="choice-text" data-number="4">Choice</p>
-            </div>
+        </div>
+        <!--End Screen-->
+        <div id="end" class="flex-column flex-center hidden">
+            <h1 id="finalScore">0</h1>
+            <h1>Congratulations!</h1>
+            <a href="/" class="btn">Go Home</a>
         </div>
     </div>
     <script src="game.js"></script>

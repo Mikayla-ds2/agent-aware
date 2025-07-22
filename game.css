@@ -29,11 +29,11 @@ body {
 }
 
 .correct {
-    background: linear-gradient(32deg, rgba(11, 223, 36) 0% rgb(41, 232, 111) 100%);
+    background: linear-gradient(32deg, rgba(11, 223, 36) 0% rgb(41, 232, 111) 100%) !important;
 }
 
 .incorrect {
-    background: linear-gradient(32deg, rgba(230, 29, 29, 1) 0% rgb(224, 11, 11, 1) 100%);
+    background: linear-gradient(32deg, rgba(230, 29, 29, 1) 0% rgb(224, 11, 11, 1) 100%) !important;
 }
 
 /* Heads Up Display */
@@ -72,6 +72,50 @@ h1 {
     font-size: 4rem;
 }
 
+.tf-container {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.tf-choice {
+    padding: 2rem 4rem;
+    font-size: 2.4rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    min-width: 12rem;
+}
+
+.tf-choice:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+
+}
+
+.hidden {
+    display: none !important;
+}
+
+#end {
+    text-align: center;
+}
+
+#finalScore {
+    color: #f5576c;
+    font-size: 5rem;
+    margin-bottom: 2rem;
+}
+
+#end h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
 @media screen and (max-width: 768px) {
     .choice-container {
         min-width: 40rem;

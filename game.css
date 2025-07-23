@@ -132,22 +132,31 @@ h1 {
     margin-bottom: 2rem;
 }
 
-.flashing-arrow {
-    animation: flash 1s infinite;
-    font-size: 2rem;
-    color: #ff69b4;
-}
-
-@keyframes flash {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 #modelInterface {
+    margin-top: 20px;
     text-align: center;
-    margin-top: 3rem;
 }
 
+.model-message {
+    font-size: 4rem;
+    background: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: inline-block;
+    border: 2px dashed #f0c000;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.model-message a {
+    color: #8000c9;
+    text-decoration: underline;
+    font-size: 3rem;
+}
 @media screen and (max-width: 768px) {
     .choice-container {
         min-width: 40rem;
@@ -169,4 +178,3 @@ h1 {
     justify-content: center;
     align-items: center;
 }
-\

@@ -13,6 +13,7 @@ let acceptingAnswers = true;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
+let modelLinkClicked = false;
 
 let questions = [
     {
@@ -85,12 +86,6 @@ function startGame() {
 }
 
 function getNewQuestion() {
-    if (currentQuestion.question && currentQuestion.question.includes("example model")) {
-        document.querySelector('#modelInterface').classList.remove('hidden');
-    }
-    else{
-        document.querySelector('#modelInterface').classList.add('hidden')
-    }
     if (availableQuestions.length === 0 || questionCounter >= max_questions) {
         endGame();
         return;
@@ -102,6 +97,14 @@ function getNewQuestion() {
 
     currentQuestion = availableQuestions.shift();
     question.innerText = currentQuestion.question;
+
+    if (currentQuestion.question && currentQuestion.question.includes("example model")) {
+        document.querySelector('#modelInterface').classList.remove('hidden');
+        document.querySelector('#modelInterface').scrollIntoView({behavior: 'smooth'});
+    }
+    else{
+        document.querySelector('#modelInterface').classList.add('hidden')
+    }
 
     mcqContainer.classList.add('hidden');
     tfContainer.classList.add('hidden');
@@ -152,10 +155,18 @@ function checkMCQAnswer(selectedAnswer, selectedElement) {
     
     setTimeout(() => {
         getNewQuestion();
-    }, 1000);
+    }, 400);
 }
 
 function checkTFAnswer(selectedAnswer, selectedElement) {
+    if (
+        currentQuestion.question.includes('example model') && !modelLinkClicked
+    ) {
+        alert("Please click the link and view the AI model output before answering!");
+        acceptingAnswers = true;
+        return;
+    }
+
     const isCorrect = selectedAnswer === currentQuestion.answer;
     
     if (isCorrect) {
@@ -173,7 +184,7 @@ function checkTFAnswer(selectedAnswer, selectedElement) {
     
     setTimeout(() => {
         getNewQuestion();
-    }, 1000);
+    }, 400);
 }
 
 function incrementScore(num) {
@@ -185,4 +196,8 @@ function endGame() {
     gameScreen.classList.add('hidden');
     endScreen.classList.remove('hidden');
     document.querySelector('#finalScore').innerText = score;
+}
+
+function setModelClicked() {
+    modelLinkClicked = true;
 }

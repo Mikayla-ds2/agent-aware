@@ -1,31 +1,37 @@
 body {
-    color: #fff;
+     background-image: url(/linedPaper.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .choice-container {
     display: flex;
     margin-bottom: 0.8rem;
     border-radius: 4px;
-    background: rgb(18, 93, 255);
+    background: #bbbbbb;
     font-size: 3rem;
     min-width: 80rem;
 }
 
 .choice-container:hover {
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(6, 103, 247, 0.5);
+    box-shadow: 0 0 1rem #ff3cac;
     transform: scale(1.02);
-    transform: transform 100ms;
+    transition: transform 100ms;
 }
 
 .choice-prefix {
     padding: 2rem 2.5rem;
-    color: white;
+    color: black;
 }
 
 .choice-text {
     padding: 2rem;
     width: 100%;
+    color: black;
 }
 
 .correct {
@@ -54,22 +60,28 @@ body {
 #progressBar {
     width: 20rem;
     height: 3rem;
-    border: 0.2rem solid rgb(11, 223, 36);
+    border: 0.2rem solid rgb(68, 160, 76);
     margin-top: 2rem;
     border-radius: 50px;
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 
 #progressBarFull {
     height: 100%;
-    background: rgb(11, 223, 36);
+    background: rgb(68, 160, 76);
     width: 0%;
 }
 
 h1 {
-    margin: 0;
-    font-size: 4rem;
+    margin: 2rem;
+    font-size: 3rem;
+    color: black;
+    max-width: 90%;
+    word-wrap: break-word;
+    line-height: 1.4;
+    overflow: hidden !important;
+
 }
 
 .tf-container {
@@ -77,23 +89,27 @@ h1 {
     gap: 2rem;
     justify-content: center;
     margin: 2rem 0;
+    overflow: hidden !important;
+
 }
 
 .tf-choice {
     padding: 2rem 4rem;
     font-size: 2.4rem;
-    background: rgba(255, 255, 255, 0.1);
+    background: #bbbbbb;
     border: none;
     border-radius: 8px;
-    color: white;
+    color: black;
     cursor: pointer;
     transition: all 0.3s;
     min-width: 12rem;
+    transform: scale(1.02);
+    overflow: hidden;
 }
 
 .tf-choice:hover {
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 1rem #ff3cac;
     transform: scale(1.02);
 
 }
@@ -107,9 +123,8 @@ h1 {
 }
 
 #finalScore {
-    color: #f5576c;
-    font-size: 5rem;
-    margin-bottom: 2rem;
+    color: black;
+    font-size: 4rem;
 }
 
 #end h1 {

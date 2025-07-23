@@ -35,16 +35,17 @@ let questions = [
         choice1: 'An entity that perceives and acts.',
         choice2: 'A hardware component used to store and retrieve large datasets.',
         choice3: 'A human supervisor responsible for overseeing machine learning algorithms.',
-        choice4: 'A mathematical formula used to calculate the output of a neural network.'
+        choice4: 'A mathematical formula used to calculate the output of a neural network.',
+        answer: 1
     },
     {
         type: 'tf',
-        question: 'You got the output of the example model.',
+        question: 'You got the output of the example model!',
         answer: true
     }
 ];
 
-const score_points = 500;
+const score_points = 100;
 const max_questions = questions.length;
 
 choices.forEach(choice => {
@@ -68,6 +69,7 @@ document.querySelectorAll('.tf-choice').forEach(choice => {
     });
 });
 window.addEventListener('load', () => {
+    console.log('DOM loaded, starting game...');
     startGame();
 });
 
@@ -83,17 +85,16 @@ function startGame() {
 }
 
 function getNewQuestion() {
-    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    if (availableQuestions.length === 0 || questionCounter >= max_questions) {
         endGame();
         return;
     }
 
     questionCounter++;
-    progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
-    progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
+    progressText.innerText = `Question ${questionCounter} of ${max_questions}`;
+    progressBarFull.style.width = `${(questionCounter / max_questions) * 100}%`;
 
-    const questionsIndex = Math.floor(Math.random() * availableQuestions.length);
-    currentQuestion = availableQuestions[questionsIndex];
+    currentQuestion = availableQuestions[questionCounter - 1]
     question.innerText = currentQuestion.question;
 
     mcqContainer.classList.add('hidden');
@@ -105,7 +106,6 @@ function getNewQuestion() {
         showTFQuestion();
     }
 
-    availableQuestions.splice(questionsIndex, 1);
     acceptingAnswers = true;
 }
 
@@ -133,7 +133,7 @@ function checkMCQAnswer(selectedAnswer, selectedElement) {
     
     if (isCorrect) {
         selectedElement.classList.add('correct');
-        incrementScore(SCORE_POINTS);
+        incrementScore(score_points);
     } else {
         selectedElement.classList.add('incorrect');
         // Show correct answer
@@ -146,7 +146,7 @@ function checkMCQAnswer(selectedAnswer, selectedElement) {
     
     setTimeout(() => {
         getNewQuestion();
-    }, 1500);
+    }, 400);
 }
 
 function checkTFAnswer(selectedAnswer, selectedElement) {
@@ -154,7 +154,7 @@ function checkTFAnswer(selectedAnswer, selectedElement) {
     
     if (isCorrect) {
         selectedElement.classList.add('correct');
-        incrementScore(SCORE_POINTS);
+        incrementScore(score_points);
     } else {
         selectedElement.classList.add('incorrect');
         // Show correct answer
@@ -167,7 +167,7 @@ function checkTFAnswer(selectedAnswer, selectedElement) {
     
     setTimeout(() => {
         getNewQuestion();
-    }, 1500);
+    }, 400);
 }
 
 function incrementScore(num) {

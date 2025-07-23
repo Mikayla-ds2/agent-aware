@@ -131,8 +131,42 @@ h1 {
     font-size: 4rem;
     margin-bottom: 2rem;
 }
+
+.flashing-arrow {
+    animation: flash 1s infinite;
+    font-size: 2rem;
+    color: #ff69b4;
+}
+
+@keyframes flash {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+#modelInterface {
+    text-align: center;
+    margin-top: 3rem;
+}
+
 @media screen and (max-width: 768px) {
     .choice-container {
         min-width: 40rem;
     }
 }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+\

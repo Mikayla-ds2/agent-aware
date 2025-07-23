@@ -85,6 +85,12 @@ function startGame() {
 }
 
 function getNewQuestion() {
+    if (currentQuestion.question && currentQuestion.question.includes("example model")) {
+        document.querySelector('#modelInterface').classList.remove('hidden');
+    }
+    else{
+        document.querySelector('#modelInterface').classList.add('hidden')
+    }
     if (availableQuestions.length === 0 || questionCounter >= max_questions) {
         endGame();
         return;
@@ -94,7 +100,7 @@ function getNewQuestion() {
     progressText.innerText = `Question ${questionCounter} of ${max_questions}`;
     progressBarFull.style.width = `${(questionCounter / max_questions) * 100}%`;
 
-    currentQuestion = availableQuestions[questionCounter - 1]
+    currentQuestion = availableQuestions.shift();
     question.innerText = currentQuestion.question;
 
     mcqContainer.classList.add('hidden');
@@ -146,7 +152,7 @@ function checkMCQAnswer(selectedAnswer, selectedElement) {
     
     setTimeout(() => {
         getNewQuestion();
-    }, 400);
+    }, 1000);
 }
 
 function checkTFAnswer(selectedAnswer, selectedElement) {
@@ -167,7 +173,7 @@ function checkTFAnswer(selectedAnswer, selectedElement) {
     
     setTimeout(() => {
         getNewQuestion();
-    }, 400);
+    }, 1000);
 }
 
 function incrementScore(num) {

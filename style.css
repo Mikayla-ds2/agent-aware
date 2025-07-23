@@ -63,7 +63,7 @@ h2 {
     color: rgb(28, 26, 26);
     /*background: linear-gradient(90deg, rgb(18, 92, 255) 0%, rgb(0, 102, 255) 100%); */
     background-color: #bbbbbb;
-    border-radius: 4px;
+    border-radius: 2rem;
 }
 
 .btn:hover {
@@ -99,7 +99,7 @@ body {
 .header-banner {
     background-color: rgba(0, 0, 0, 0.6);
     padding: 1rem 2rem;
-    border-radius: 12px;
+    border-radius: 2rem;
     display: inline-block;
     margin: 2rem auto;
     text-align: center;

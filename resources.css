@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(/gridPaper.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    line-height: 1.6;
+
+}
+
+.header-banner {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 2rem 2rem;
+    border-radius: 2rem;
+    display: inline-block;
+    margin: 1rem auto;
+    text-align: center;
+}

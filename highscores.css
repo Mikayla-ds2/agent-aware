@@ -1,28 +1,59 @@
 body {
     background-image: url(HexaImage.jpg);
+    margin: 0;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
+    backdrop-filter: blur(4px);
+    background-attachment: fixed;
+    align-items: center;
+
+}
+
+main {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgab(0, 0, 0, 0.3);
+  align-items: center;
+
 }
 
 .leaderboard {
     list-style: none;
     padding: 0;
-    margin: 20px 0;
-    background: #f8f9fa;
+    margin: 0;
+    background: transparent;
     border-radius: 8px;
     overflow: hidden;
+    align-items: center;
+
+}
+
+.leaderboard h1 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 4px #000;
 }
 
 .leaderboard-item {
     display: grid;
     grid-template-columns: 50px 1fr 80px 100px;
-    gap: 10px;
-    padding: 15px;
-    border-bottom: 1px solid #e9ecef;
-    align-items: center;
-    transition: background-color 0.2s;
+    padding: 18px 16px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.2s ease;
+
 }
 
 .leaderboard-item:hover {
-    background-color: #e9ecef;
+  transform: scale(1.01);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .leaderboard-item:last-child {
@@ -30,61 +61,55 @@ body {
 }
 
 .leaderboard-item:nth-child(1) {
-  background: linear-gradient(135deg, #ffd700, #ffed4e);
-  font-weight: bold;
+  background: linear-gradient(90deg, #d7d2cc, #304352);
 }
 
 .leaderboard-item:nth-child(2) {
-  background: linear-gradient(135deg, #c0c0c0, #e5e5e5);
-  font-weight: bold;
+  background: linear-gradient(90deg, #d7d2cc, #304352);
 }
 
 .leaderboard-item:nth-child(3) {
-  background: linear-gradient(135deg, #cd7f32, #daa520);
-  font-weight: bold;
+  background: linear-gradient(90deg, #d7d2cc, #304352);
 }
 
 .rank {
   font-weight: bold;
+  font-size: 1.75rem;
   text-align: center;
-  font-size: 1.2em;
 }
 
 .name {
+  font-size: 1.5rem;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .score {
-  font-weight: bold;
+  font-size: 1.5rem;
   text-align: right;
-  color: #28a745;
-  font-size: 1.1em;
+  font-weight: bold;
+  color: #00ffae;
 }
 
 .date {
-  font-size: 0.9em;
-  color: #6c757d;
+  font-size: 1.5rem;
   text-align: right;
+  color: #ccc;
 }
 
-#leaderboard h3 {
-  margin: 0 0 20px 0;
-  text-align: center;
-  color: #333;
-}
-
-/* Responsive design */
+/* Responsive: Remove date & shrink font on mobile */
 @media (max-width: 600px) {
   .leaderboard-item {
     grid-template-columns: 40px 1fr 60px;
     gap: 5px;
-    padding: 10px;
+    padding: 12px;
   }
-  
+
   .date {
-    display: none; /* Hide date on small screens */
+    display: none;
   }
-  
+
   .score {
     font-size: 1em;
   }

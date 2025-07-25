@@ -80,18 +80,18 @@ function displayLeaderboard(scores, containerID = 'leaderboard') {
         return;
     }
 
-    let html = '<h3>High Scores</h3><ol class="leaderboard">';
+    let html = '<h1>High Scores</h1><ol class="leaderboard">';
 
     scores.forEach((record, index) => {
         const { Name, Score, Date } = record.fields;
-        html +=
+        html += `
         <li class="leaderboard-item">
             <span class="rank">${index + 1}</span>
             <span class="name">${Name || 'Anonymous'}</span>
             <span class="score">${Score}</span>
             <span class="date">${Date}</span>
         </li>
-        ;
+        `;
     });
 
     html += '</ol>';
@@ -119,11 +119,18 @@ async function handleQuizComplete(playerName, finalScore, slackID = null) {
 }
 
 async function loadLeaderboard() {
+    const container = document.getElementById('leaderboard');
     try {
         const highScores = await getHighScores();
-        displayLeaderboard(highScores);
+
+        if (highScores.length === 0) {
+        container.innerHTML = '<p>No high scores yet. Be the first!</p>';
+        } else {
+            displayLeaderboard(highScores);
+        }
+
     } catch (error) {
         console.error('Error loading leaderboard:', error)
-        document.getElementById('leaderboard').innerHTML = <p>Error leading leaderboard</p>;
+        document.getElementById('leaderboard').innerHTML = '<p>Error leading leaderboard</p>';    
     }
 }

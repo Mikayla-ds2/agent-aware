@@ -7,6 +7,11 @@ const mcqContainer = document.querySelector('#mcqContainer');
 const tfContainer = document.querySelector('#tfContainer');
 const gameScreen = document.querySelector('#game');
 const endScreen = document.querySelector('#end');
+const startQuizBtn = document.getElementById('startQuizBtn');
+const preQuizForm = document.getElementById('preQuizForm');
+const gameContainer = document.getElementById('game');
+const score_points = 100;
+const max_questions = questions.length;
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -14,6 +19,8 @@ let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
 let modelLinkClicked = false;
+let playerName = "";
+let slackID = "";
 
 let questions = [
     {
@@ -46,8 +53,20 @@ let questions = [
     }
 ];
 
-const score_points = 100;
-const max_questions = questions.length;
+startQuizBtn.addEventListener('click', () => {
+    playerName = document.getElementById('playerName').value.trim();
+    slackID = document.getElementById('slackID').value.trim();
+
+    if (!playerName || !slackID) {
+        alert('Please enter both your name and Slack ID to begin.');
+        return;
+    }
+
+    preQuizForm.style.display = 'none';
+    gameContainer.style.display = 'flex';
+
+    startGame();
+});
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {

@@ -6,9 +6,7 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
 }
-#game, #end {
-    display: none;
-}
+
 .choice-container {
     display: flex;
     margin-bottom: 0.8rem;
@@ -179,4 +177,21 @@ h1 {
 .flex-center {
     justify-content: center;
     align-items: center;
+}
+
+#preQuizForm input {
+    width: 300px;
+    padding: 10px 16px;
+    margin: 10px 0;
+    font-size: 1.5rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    transition: border 0.2s ease;
+}
+
+#preQuizForm input:focus {
+  border: 2px solid #333;
+  background-color: #fdfdfd;
 }

@@ -10,8 +10,6 @@ const endScreen = document.querySelector('#end');
 const startQuizBtn = document.getElementById('startQuizBtn');
 const preQuizForm = document.getElementById('preQuizForm');
 const gameContainer = document.getElementById('game');
-const score_points = 100;
-const max_questions = questions.length;
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -62,11 +60,13 @@ startQuizBtn.addEventListener('click', () => {
         return;
     }
 
-    preQuizForm.style.display = 'none';
-    gameContainer.style.display = 'flex';
-
+    preQuizForm.classList.add('hidden');
+    gameScreen.classList.remove('hidden');
     startGame();
 });
+
+const score_points = 100;
+const max_questions = questions.length;
 
 choices.forEach(choice => {
     choice.addEventListener('click', e => {
@@ -88,19 +88,14 @@ document.querySelectorAll('.tf-choice').forEach(choice => {
         checkTFAnswer(selectedAnswer, e.target);
     });
 });
-window.addEventListener('load', () => {
-    console.log('DOM loaded, starting game...');
-    startGame();
-});
 
 function startGame() {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-    
     gameScreen.classList.remove('hidden');
     endScreen.classList.add('hidden');
-    
+    preQuizForm.classList.add('hidden');
     getNewQuestion();
 }
 
@@ -211,10 +206,17 @@ function incrementScore(num) {
     scoreText.innerText = score;
 }
 
-function endGame() {
+async function endGame() {
     gameScreen.classList.add('hidden');
     endScreen.classList.remove('hidden');
-    document.querySelector('#finalScore').innerText = score;
+    document.querySelector('#finalScore').innerText = score
+
+    try {
+        await handleQuizComplete(playerName, score, slackID);
+    } catch (error) {
+        console.error('Error handling quiz completion: ', error);
+        alert(`Great Job ${playerName}! You scored ${score} points!`);
+    }
 }
 
 function setModelClicked() {

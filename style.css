@@ -89,7 +89,7 @@ h2 {
 }
 
 body {
-    background-image: url(/compositionImage.jpg);
+    background-image: url(./compositionImage.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
